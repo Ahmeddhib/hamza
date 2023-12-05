@@ -1,0 +1,49 @@
+<div class="container">
+    <div>
+        <h2>Ajouter un Chat :</h2>
+    </div>
+    <form>
+        <div hidden class="col-sm-2 col-md-2 col-lg-2">
+            <label>ID Chat</label>
+            <input type="text" [(ngModel)]="newChat.idChat" name="idChat" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Nom Chat</label>
+            <input type="text" [(ngModel)]="newChat.nomChat" name="nomChat" class="form-control">
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>Prix Adoption</label>
+            <input type="number" [(ngModel)]="newChat.prixAdoption" name="prixAdoption" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Date Naissance</label>
+            <input type="date" [(ngModel)]="newChat.datenaissance" name="datenaissance" class="form-control">
+
+        </div>
+
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Souche</label>
+            <select class="form-control form-control-lg" id="idSou" name="idSou" [(ngModel)]="newIdSou">
+                <option *ngFor="let sou of souches" [value]="sou.idSou">
+                    {{sou.nomSou}}
+                </option>
+            </select>
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>coulour</label>
+            <input type="string" [(ngModel)]="newChat.coulour" name="colour" class="form-control">
+        </div>
+        <div class="col-sm-16 col-md-16 col-lg-16">
+            <label class="mb-2">Image :</label>
+            <input type="file" (change)="onImageUpload($event)" name="logo" class="form-control">
+        </div>
+        <div class="col-sm-16 col-md-16 col-lg-16">
+            <img [src]="imagePath" class="card-img-top img-fluid rounded-start" style="width: 500px; height: 300px" />
+        </div>
+        <div class="mt-2">
+            <button type="submit" (click)="addChat()" class="btn btn-success">Ajouter</button>
+        </div>
+
+
+    </form>
+</div>

@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                <tr>
+                    <th>Id</th>
+                    <th>Nom Chat</th>
+                    <th>Prix Adoption</th>
+                    <th>Date de Naissance</th>
+                    <th>coulour</th>
+                    <th>souche</th>
+                    <th>Image</th>
+                    <th></th>
+                </tr>
+                <tbody *ngFor="let chat of chats">
+                    <tr>
+                        <td>{{chat.idChat}}</td>
+                        <td>{{chat.nomChat}}</td>
+                        <td>{{chat.prixAdoption}}</td>
+                        <td>{{chat.datenaissance | date:'dd/MM/yyyy'}}</td>
+                        <td>{{chat.coulour}}</td>
+                        <td>{{chat.souche!.nomSou}}</td>
+                        <td><img class="card-img-top img-responsive" src="{{chat.imageStr}}"
+                            style="height :50px;width:100px"></td>
+                        <td><a *ngIf="authService.isAdmin()" class="btn btn-danger"
+                                (click)="supprimerChat(chat)">Supprimer</a></td>
+                        <td><a *ngIf="authService.isAdmin()" class="btn btnsuccess"
+                                [routerLink]="['/updateChat',chat.idChat]">Modifier</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>

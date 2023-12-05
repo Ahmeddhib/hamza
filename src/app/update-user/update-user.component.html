@@ -1,0 +1,33 @@
+<div class="container mt-5">
+    <div class="card">
+      <div class="card-header">
+        <h1>Information about User</h1>
+        <input type="text" [(ngModel)]="user.username" name="id" class="form-control" id="username" readonly />
+      </div>
+      <div class="card-body">
+        <form>
+          <div class="form-group">
+            <label for="roleSelect"><b>Select Role to Add</b></label>
+            <select [(ngModel)]="newRole" name="roleSelect" class="form-control">
+              <option *ngFor="let role of roles" [ngValue]="role">{{ role.role }}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="currentRole"><b>Current Role</b></label>
+            <div class="d-flex flex-wrap">
+              <ng-container *ngFor="let role of user.roles">
+                <span [ngClass]="role.role === 'ADMIN' ? 'badge badge-success mr-2' : 'badge badge-primary mr-2'">
+                  <i class="fa fa-user" aria-hidden="true"></i> {{ role.role }}
+                  <button class="btn btn-sm btn-danger ml-1" (click)="confirmDeleteRole(role.role_id)">
+                    Remove Role
+                  </button>
+                </span>
+              </ng-container>
+            </div>
+          </div>
+          <button class="btn btn-info" (click)="confirmAddRole()">Modify</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  

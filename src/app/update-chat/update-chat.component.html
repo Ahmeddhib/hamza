@@ -1,0 +1,70 @@
+<div class="container">
+    <div>
+        <h2>Modifier un Chat :</h2>
+    </div>
+    <form>
+        <div hidden class="col-sm-2 col-md-2 col-lg-2">
+            <label>ID Chat</label>
+            <input readonly type="text" [(ngModel)]="currentChat.idChat" name="idChat" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Nom Chat</label>
+            <input type="text" [(ngModel)]="currentChat.nomChat" name="nomChat" class="form-control">
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>Prix Chat</label>
+            <input type="number" [(ngModel)]="currentChat.prixAdoption" name="prixAdoption" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Date de Naissance</label>
+            <input type="date" [ngModel]="currentChat.datenaissance | date: 'yyyy-MM-dd'
+            " (ngModelChange)=" currentChat.datenaissance= $event" name="datenaissance" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <select class="form-control form-control-lg" id="idSou" name="idSou" [(ngModel)]="updatedSouId">
+                <option *ngFor="let sou of souches" [value]="sou.idSou">
+                    {{sou.nomSou}}
+                </option>
+            </select>
+        </div>
+        <div class="col-sm-16 col-md-16 col-lg-16">
+            <img [src]="myImage" class="card-img-top img-fluid rounded-start" style="width: 500px; height: 300px" />
+        </div>
+        <div class="col-sm-16 col-md-16 col-lg-16">
+            <label class="mb-2">Image :</label>
+            <input type="file" (change)="onImageUpload($event)" class="form-control">
+        </div>
+        <div class="mt-2">
+            <button type="submit" (click)="onAddImageChat()" class="btn
+                btn-success">Ajouter Image</button>
+        </div>
+        <div class="col-sm-16 col-md-16 col-lg-16">
+            <img [src]="myImage" class="card-img-top img-fluid rounded-start"
+            style="width: 500px; height: 300px" />
+            </div>
+
+            <div class="card shadow mb-4">
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Images</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let img of currentChat.images">
+                            <tr>
+                                <td><img class="card-img-top img-responsive" src="{{'data:' + img.type + ';base64,' + img.image}}"
+                                        style="height :50px;width:100px"></td>
+                                <td style="width:20%" ><a class="btn btn-danger">Supprimer</a></td>
+                                                    
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        <div class="mt-2">
+            <button type="submit"  class="btn btn-success">Modifer</button>
+        </div>
+    </form>
+</div>

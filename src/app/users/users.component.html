@@ -1,0 +1,31 @@
+<div class="container" style="margin-top:100px;">
+    <div class="card shadow mb-4">
+      <div class="">
+        <table class="table">
+          <thead class="thead-secondary">
+          <tr> <th>Id</th><th>Username</th><th >Role</th><th >Email</th><th>Suppression</th><th>Modification</th></tr>
+          </thead>
+          <tbody *ngFor="let user of users">
+          <tr>
+            <td>{{user.user_id}}</td>
+            <td>{{user.username}}</td>
+            <td >
+              <ul>
+                <li *ngFor="let role of user.roles">{{role.role}}</li>
+              </ul>
+            </td>
+            <td>{{user.email}}
+            </td>
+            <td >
+                
+                <button *ngIf="authService.isAdmin()" (click)="supprimerUser(user)" class=" btn btn-danger">supprimer </button>
+              </td>
+              <td>
+                <button *ngIf="authService.isAdmin()" [routerLink]="['/updateUser',user.user_id]"  class="btn btn-success">modification </button>
+              </td>
+           </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

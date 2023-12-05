@@ -1,0 +1,72 @@
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card my-5">
+          <div class="card-body text-center">
+            <h2 class="text-secondary mt-5"><b>Sign Up</b></h2>
+            <p class="fs-4 mt-2">Create your account</p>
+            <form name="form" (ngSubmit)="register()" #f="ngForm" novalidate>
+              <div class="mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="username"
+                  placeholder="Username"
+                  [(ngModel)]="form.username"
+                  required
+                  minlength="3"
+                  maxlength="20"
+                />
+              </div>
+              <div class="mb-3">
+                <input
+                  type="email"
+                  class="form-control"
+                  name="email"
+                  placeholder="Email"
+                  [(ngModel)]="form.email"
+                  required
+                  email
+                />
+              </div>
+              <div class="mb-3">
+                <input
+                  type="password"
+                  class="form-control"
+                  name="password"
+                  placeholder="Password"
+                  [(ngModel)]="form.password"
+                  required
+                  minlength="6"
+                />
+              </div>
+              <div class="mb-3">
+                <input
+                  type="password"
+                  class="form-control"
+                  name="confirmPassword"
+                  placeholder="Confirm Password"
+                  [(ngModel)]="form.confirmPassword"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <button class="btn btn-primary btn-block">Sign Up</button>
+              </div>
+              <div class="alert alert-danger" *ngIf="f.submitted && isSignUpFailed">
+                Signup failed!<br />{{ errorMessage }}
+              </div>
+            </form>
+            <div class="alert alert-success" *ngIf="isSuccessful">
+              Your registration is successful!
+            </div>
+            <hr />
+            <div>
+              <a [routerLink]="['/login']">Already have an account?</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

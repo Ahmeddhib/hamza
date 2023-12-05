@@ -1,0 +1,22 @@
+<form (ngSubmit)="saveSouche()">
+    <div [hidden]="ajout">
+      <label for="idSouche">ID Souche</label>
+      <input type="text" id="idSouche" [(ngModel)]="souche.idSou" name="idSouche" class="form-control w-25">
+    </div>
+    <div class="form-group">
+      <label for="nomSouche">Nom Souche</label>
+      <input type="text" id="nomSouche" [(ngModel)]="souche.nomSou" name="nomSouche" class="form-control"
+        placeholder="Entrez un nom de Souche...">
+    </div>
+    <div class="form-group">
+      <label for="descriptionSou">Description Souche</label>
+      <textarea id="descriptionSou" [(ngModel)]="souche.descriptionSou" name="descriptionSou" class="form-control"
+        placeholder="Entrez une description de la Souche..."></textarea>
+    </div>
+    <div class="mt-2">
+      <button type="submit" [disabled]="!souche.nomSou" class="btn btn-success">
+        {{ ajout ? 'Ajouter' : 'Modifier' }}
+      </button>
+    </div>
+  </form>
+  
